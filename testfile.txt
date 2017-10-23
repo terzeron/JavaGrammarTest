@@ -1,0 +1,7 @@
+Home >> Java >> How To Create Zip File Using Java
+How To Create Zip File Using Java
+April 21, 2014 by Krishna Srinivasan Leave a Comment
+
+This example demonstrates how to create a zip file with the files and directories. Java provides java.util.zip package for compressing and packaging to zip file format. It is very common utility used by most of the applications. The key classes used in this package for packaging to zip format are ZipOutputStream, ZipEntry and Deflater. This example very well illustrates the packaging files and directories with path. Lets look at the example.
+
+If you have any issues with the below code, please write it in the comments section. Note that, you have to provide the list of files and output file name for this program to work. I have added that code into the main method. Also read our previous articles working with java.util.zip and list contents from zip file.
