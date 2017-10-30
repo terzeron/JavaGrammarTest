@@ -5,6 +5,7 @@ package net.terzeron.test.comparable;
  */
 public class Person implements Comparable<Person> {
     int i;
+
     Person(int i) {
         this.i = i;
     }

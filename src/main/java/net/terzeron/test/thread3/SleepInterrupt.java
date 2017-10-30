@@ -14,14 +14,14 @@ public class SleepInterrupt extends Object implements Runnable {
         System.out.println("in run() - doing stuff after nap");
         System.out.println("in run() - leaving normally");
     }
-    
-    public static void main(String [] args) {
+
+    public static void main(String[] args) {
         SleepInterrupt si = new SleepInterrupt();
         Thread t = new Thread(si);
         t.start();
-        
+
         try {
-            Thread.sleep(5000); 
+            Thread.sleep(5000);
         } catch (InterruptedException x) {
         }
 

@@ -6,6 +6,7 @@ package net.terzeron.javagrammar;
 public class BadPoint {
     int x;
     int y;
+
     void move(int dx, int dy) throws BadPointException {
         x += dx;
         y += dy;

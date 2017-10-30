@@ -13,11 +13,11 @@ public class TwoThreadGetName extends Thread {
         System.out.println("name=" + name);
     }
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         TwoThreadGetName tt = new TwoThreadGetName();
         tt.setName("my worker thread");
         tt.start();
-        
+
         for (int i = 0; i < 10; i++) {
             tt.printMsg();
         }

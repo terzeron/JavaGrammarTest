@@ -35,6 +35,7 @@ public class BasicStack<Item> implements Iterable<Item> {
 
     private class ArrayIterator implements Iterator<Item> {
         private int i = N;
+
         public boolean hasNext() {
             return i > 0;
         }
