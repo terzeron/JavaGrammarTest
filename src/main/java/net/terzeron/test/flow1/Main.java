@@ -1,6 +1,6 @@
-package net.terzeron.test.flow;
+package net.terzeron.test.flow1;
 
-public class MainApp {
+public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 

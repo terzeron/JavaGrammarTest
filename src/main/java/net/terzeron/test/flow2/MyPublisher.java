@@ -1,10 +1,6 @@
-package net.terzeron.test.flow;
+package net.terzeron.test.flow2;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.*;
-import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,13 +10,12 @@ import static java.util.concurrent.Executors.newSingleThreadExecutor;
 public class MyPublisher implements Flow.Publisher<Integer> {
     private static final String LOG_MESSAGE_FORMAT = "Publisher >> [%s] %s%n";
     final ExecutorService executor = Executors.newFixedThreadPool(4);
-    private List<MySubscription> subscriptions = Collections.synchronizedList(new ArrayList<MySubscription>());
+    private MySubscription subscription;
     private final CompletableFuture<Void> terminated = new CompletableFuture<>();
 
     @Override
-    public void subscribe(Subscriber<? super Integer> subscriber) {
-        MySubscription subscription = new MySubscription(subscriber, executor);
-        subscriptions.add(subscription);
+    public void subscribe(Flow.Subscriber<? super Integer> subscriber) {
+        subscription = new MySubscription(subscriber, executor);
         subscriber.onSubscribe(subscription);
     }
 
@@ -62,18 +57,11 @@ public class MyPublisher implements Flow.Publisher<Integer> {
         @Override
         public void cancel() {
             isCanceled.set(true);
-
-            synchronized (subscriptions) {
-                subscriptions.remove(this);
-                if (subscriptions.size() == 0) {
-                    shutdown();
-                }
-            }
+            shutdown();
         }
 
         private void publishItems(long n) {
             for (int i = 0; i < n; i++) {
-
                 executor.execute(() -> {
                     int v = value.incrementAndGet();
                     log("publish item: [" + v + "] ...");
@@ -83,19 +71,18 @@ public class MyPublisher implements Flow.Publisher<Integer> {
         }
 
         private void shutdown() {
-            log("Shut down executor...");
+            log("Shutdown executor...");
             executor.shutdown();
             newSingleThreadExecutor().submit(() -> {
-
-                log("Shutdown complete.");
+                log("Shutdown complete");
                 terminated.complete(null);
             });
         }
+    }
 
-        private void log(String message, Object... args) {
-            String fullMessage = String.format(LOG_MESSAGE_FORMAT, currentThread().getName(), message);
+    private void log(String message, Object... args) {
+        String fullMessage = String.format(LOG_MESSAGE_FORMAT, currentThread().getName(), message);
 
-            System.out.printf(fullMessage, args);
-        }
+        System.out.printf(fullMessage, args);
     }
 }

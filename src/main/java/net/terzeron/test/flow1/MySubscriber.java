@@ -1,4 +1,4 @@
-package net.terzeron.test.flow;
+package net.terzeron.test.flow1;
 
 import java.util.Random;
 import java.util.concurrent.Flow.Subscriber;
