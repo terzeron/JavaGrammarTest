@@ -1,11 +1,12 @@
 package net.terzeron.test.socket;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SocketTest {
+    private ServerThread t;
+
     class ServerThread extends Thread {
         public void run() {
             GreetServer server = new GreetServer();
@@ -13,14 +14,15 @@ public class SocketTest {
         }
     }
 
-    @BeforeEach
-    public void startServer() {
-        ServerThread t = new ServerThread();
+    void startServer() {
+        t = new ServerThread();
         t.start();
     }
 
     @Test
     public void givenGreetingClient_whenServerRespondsWhenStarted_thenCorrect() {
+        startServer();
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -35,5 +37,6 @@ public class SocketTest {
 
         response = client.sendMessage("hello there");
         assertEquals("unrecognized greeting", response);
+
     }
 }

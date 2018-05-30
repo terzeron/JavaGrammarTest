@@ -20,11 +20,14 @@ public class GreetServer {
             clientSocket = serverSocket.accept();
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String greeting = in.readLine();
-            if ("hello server".equals(greeting)) {
-                out.println("hello client");
-            } else {
-                out.println("unrecognized greeting");
+
+            while (true) {
+                String greeting = in.readLine();
+                if ("hello server".equals(greeting)) {
+                    out.println("hello client");
+                } else {
+                    out.println("unrecognized greeting");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
