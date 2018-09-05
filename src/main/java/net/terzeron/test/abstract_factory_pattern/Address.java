@@ -1,8 +1,10 @@
 package net.terzeron.test.abstract_factory_pattern;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 abstract class Address {
     private String street;
     private String city;
