@@ -1,7 +1,6 @@
 package net.terzeron.test.awt_menu;
 
 import java.awt.*;
-import java.applet.*;
 
 public class MenuApplication extends Object {
     public static void main(String[] args) {
@@ -29,6 +28,6 @@ public class MenuApplication extends Object {
         printSubmenu.add("Print Document");
 
         myFrame.setSize(300, 200);
-        myFrame.show();
+        myFrame.setVisible(true);
     }
 }
