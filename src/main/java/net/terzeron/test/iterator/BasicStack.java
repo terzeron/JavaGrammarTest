@@ -6,12 +6,12 @@ import java.util.Iterator;
  * Created by terzeron on 2016. 9. 5..
  */
 public class BasicStack<Item> implements Iterable<Item> {
-    public final int CAPACITY = 1000;
-    private Item s[];
+    private Item[] s;
     private int N;
 
     public BasicStack() {
-        s = (Item[]) new Object[CAPACITY];
+        final int CAPACITY = 1000;
+        s = (Item []) new Object[CAPACITY];
     }
 
     public Item pop() {

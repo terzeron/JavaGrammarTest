@@ -11,8 +11,8 @@ public class IteratorTest {
         arrays.push(4);
         arrays.push(8);
         arrays.push(31);
-        arrays.pop();
-        arrays.pop();
+        Integer a = arrays.pop();
+        Integer b = arrays.pop();
         Iterator<Integer> i = arrays.iterator();
 
         while (i.hasNext()) {
