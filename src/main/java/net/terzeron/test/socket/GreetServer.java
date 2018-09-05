@@ -23,6 +23,10 @@ public class GreetServer {
 
             while (true) {
                 String greeting = in.readLine();
+                if (greeting == null) {
+                    break;
+                }
+
                 if ("hello server".equals(greeting)) {
                     out.println("hello client");
                 } else {
