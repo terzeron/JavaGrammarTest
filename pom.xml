@@ -1,9 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.terzeron.test</groupId>
+    <groupId>com.terzeron.grammar</groupId>
     <artifactId>JavaGrammarTest</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>ArrayUtilsTest</module>
+        <module>CollectionTest</module>
+        <module>StreamTest</module>
+        <module>AbstractFactoryPattern</module>
+        <module>EnumerationTest</module>
+        <module>SocketTest</module>
+        <module>SimpleGrammars</module>
+        <module>MailTest</module>
+        <module>NIOTest</module>
+        <module>CompressTest</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -12,13 +25,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-            <version>1.6.0</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
         </dependency>
+    </dependencies>
+
+    <!--dependencies>
         <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
+            <groupId>com.sun.com.terzeron.grammar.mail</groupId>
+            <artifactId>javax.com.terzeron.grammar.mail</artifactId>
             <version>1.6.0</version>
         </dependency>
         <dependency>
@@ -32,24 +48,9 @@
             <version>2.9.8</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.7</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.4.1</version>
-        </dependency>
-    </dependencies>
+    </dependencies-->
 </project>
