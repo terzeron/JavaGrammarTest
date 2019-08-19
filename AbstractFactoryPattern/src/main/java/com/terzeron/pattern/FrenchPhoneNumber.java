@@ -1,4 +1,4 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
 public class FrenchPhoneNumber extends PhoneNumber {
     private static final String COUNTRY_CODE = "33";

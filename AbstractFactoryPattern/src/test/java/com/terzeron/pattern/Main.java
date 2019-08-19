@@ -1,5 +1,7 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
+import com.terzeron.pattern.Address;
+import com.terzeron.pattern.USAddressFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

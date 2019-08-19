@@ -1,4 +1,4 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
 import lombok.Getter;
 import lombok.Setter;

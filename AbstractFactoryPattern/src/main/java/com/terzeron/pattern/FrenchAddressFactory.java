@@ -1,4 +1,4 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
 public class FrenchAddressFactory implements AddressFactory {
     public Address createAddress() {

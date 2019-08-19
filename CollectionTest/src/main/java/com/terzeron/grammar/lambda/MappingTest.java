@@ -1,4 +1,4 @@
-package stream;
+package com.terzeron.grammar.compress;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.*;
 
-public class StreamTest {
+public class MappingTest {
     static Logger log = Logger.getLogger("StreamTest");
 
     public static Stream<String> streamOf(List<String> list) {
@@ -159,27 +159,5 @@ public class StreamTest {
         System.out.println(size4);
         System.out.println(counter); // count of being called
 
-        // reduction
-        print_horizontal_dash();
-        OptionalInt reduced = IntStream.range(1, 4).reduce((a, b) -> a + b);
-        reduced.ifPresent(System.out::println); // 1 + 2 + 3
-        print_horizontal_dash();
-        int reducedTwoParams = IntStream.range(1, 4).reduce(20, (a, b) -> {
-            System.out.println("reduce: a=" + a + ",b=" + b);
-            return a + b;
-        });
-        System.out.println(reducedTwoParams); // 20 + (1 + 2 + 3)
-
-        print_horizontal_dash();
-        int reducedParallel = Arrays.asList(1, 2, 3).parallelStream().reduce(10,
-                /* accumulator */ (a, b) -> {
-                    System.out.println("parallelStream().accumulator: a=" + a + ",b=" + b);
-                    return a + b;
-                },
-                /* combiner  */ (a, b) -> {
-                    System.out.println("parallelStream().combiner: a=" + a + ",b=" + b);
-                    return a + b;
-                });
-        System.out.println(reducedParallel);
     }
 }

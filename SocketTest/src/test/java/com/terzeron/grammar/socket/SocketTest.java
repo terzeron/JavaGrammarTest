@@ -1,4 +1,4 @@
-package com.terzeron.grammar.socket;
+package com.terzeron.grammar.compress.pattern.socket;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

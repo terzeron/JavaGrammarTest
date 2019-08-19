@@ -1,4 +1,4 @@
-package com.terzeron.grammar.socket;
+package com.terzeron.grammar.compress.pattern.socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;

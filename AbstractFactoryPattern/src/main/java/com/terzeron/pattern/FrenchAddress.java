@@ -1,4 +1,4 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
 public class FrenchAddress extends Address {
     private static final String COUNTRY = "FRANCE";

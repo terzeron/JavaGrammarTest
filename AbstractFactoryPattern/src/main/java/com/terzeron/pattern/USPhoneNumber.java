@@ -1,4 +1,4 @@
-package com.terzeron.grammar.abstract_factory_pattern;
+package com.terzeron.pattern;
 
 public class USPhoneNumber extends PhoneNumber {
     private static final String COUNTRY_CODE = "01";
