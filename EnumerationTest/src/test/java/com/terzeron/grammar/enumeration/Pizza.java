@@ -1,4 +1,4 @@
-package enumeration;
+package com.terzeron.grammar.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

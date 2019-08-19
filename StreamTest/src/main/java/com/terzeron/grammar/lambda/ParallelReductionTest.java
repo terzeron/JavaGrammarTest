@@ -1,4 +1,4 @@
-package stream;
+package com.terzeron.grammar.lambda;
 
 import java.util.Arrays;
 import java.util.OptionalInt;

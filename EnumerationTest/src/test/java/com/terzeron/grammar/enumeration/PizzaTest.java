@@ -1,4 +1,4 @@
-package enumeration;
+package com.terzeron.grammar.enumeration;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

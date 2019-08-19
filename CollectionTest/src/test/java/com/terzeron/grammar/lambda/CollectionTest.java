@@ -1,4 +1,4 @@
-package collection_in_java9;
+package com.terzeron.grammar.lambda;
 
 import org.junit.jupiter.api.Test;
 

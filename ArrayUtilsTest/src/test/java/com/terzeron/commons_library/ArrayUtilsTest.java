@@ -1,4 +1,4 @@
-package com.terzeron.grammar.compress.commons_library;
+package com.terzeron.commons_library;
 
 import org.apache.commons.lang3.ArrayUtils;
 

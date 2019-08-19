@@ -1,4 +1,4 @@
-package com.terzeron.grammar.compress;
+package com.terzeron.grammar.lambda;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

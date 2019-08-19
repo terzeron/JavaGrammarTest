@@ -1,4 +1,4 @@
-package stream;
+package com.terzeron.grammar.lambda;
 
 
 import lombok.AllArgsConstructor;

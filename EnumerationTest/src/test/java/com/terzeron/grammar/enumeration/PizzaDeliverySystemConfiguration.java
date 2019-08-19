@@ -1,4 +1,4 @@
-package enumeration;
+package com.terzeron.grammar.enumeration;
 
 public enum PizzaDeliverySystemConfiguration {
     INSTANCE;
