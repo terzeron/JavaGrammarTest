@@ -1,11 +1,14 @@
 package com.terzeron.grammar.lambda;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.*;
@@ -13,11 +16,11 @@ import java.util.stream.*;
 public class MappingTest {
     static Logger log = Logger.getLogger("StreamTest");
 
-    public static Stream<String> streamOf(List<String> list) {
+    static Stream<String> streamOf(List<String> list) {
         return (list == null || list.isEmpty()) ? Stream.empty() : list.stream();
     }
 
-    private static void print_horizontal_dash() {
+    private static void printHorizontalDash() {
         System.out.println("--------------------------------------------------------");
     }
 
@@ -33,22 +36,22 @@ public class MappingTest {
         List<String> list1 = Arrays.asList("a", "b", "c");
         streamOf(list1);
         Stream<String> streamOfCollection = list1.stream();
-        print_horizontal_dash();
+        printHorizontalDash();
         streamOfCollection.forEach(System.out::println);
 
         // builder
         Stream<String> streamBuilder = Stream.<String>builder().add("a").add("b").add("c").build();
-        print_horizontal_dash();
+        printHorizontalDash();
         streamBuilder.forEach(System.out::println);
 
         // generate
         Stream<String> streamGenerated = Stream.generate(() -> "element").limit(3);
-        print_horizontal_dash();
+        printHorizontalDash();
         streamGenerated.forEach(System.out::println);
 
         // iterate
         Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).limit(4);
-        print_horizontal_dash();
+        printHorizontalDash();
         streamIterated.forEach(System.out::println);
 
         // primitives
@@ -56,29 +59,29 @@ public class MappingTest {
         LongStream longStream = LongStream.rangeClosed(1, 3);
         Random random = new Random();
         DoubleStream doubleStream = random.doubles(3);
-        print_horizontal_dash();
+        printHorizontalDash();
         intStream.forEach(System.out::println);
-        print_horizontal_dash();
+        printHorizontalDash();
         longStream.forEach(System.out::println);
-        print_horizontal_dash();
+        printHorizontalDash();
         doubleStream.forEach(System.out::println);
 
         // stream of string
         IntStream streamOfChars = "abc".chars();
         Stream<String> streamOfString = Pattern.compile(", ").splitAsStream("a, b, c");
-        print_horizontal_dash();
+        printHorizontalDash();
         streamOfChars.forEach(System.out::println);
-        print_horizontal_dash();
+        printHorizontalDash();
         streamOfString.forEach(System.out::println);
 
         // stream of file
         Path path = Paths.get("file.txt");
         try {
             Stream<String> streamOfStrings = Files.lines(path);
-            Stream<String> streamWithCharset = Files.lines(path, Charset.forName("UTF-8"));
-            print_horizontal_dash();
+            Stream<String> streamWithCharset = Files.lines(path, StandardCharsets.UTF_8);
+            printHorizontalDash();
             streamOfStrings.forEach(System.out::println);
-            print_horizontal_dash();
+            printHorizontalDash();
             streamWithCharset.forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,35 +90,35 @@ public class MappingTest {
         // referencing
         Stream<String> stream = Stream.of("ab", "b", "c", "b").filter(element -> element.contains("b"));
         Optional<String> anyElement = stream.findAny(); // no guarantee for the encounter order
-        print_horizontal_dash();
+        printHorizontalDash();
         anyElement.ifPresent(System.out::println);
 
         stream = Stream.of("a", "b", "c").filter(element -> element.contains("b") || element.contains("a"));
         Optional<String> firstElement = stream.findFirst(); // guarantee for the encounter order
-        print_horizontal_dash();
+        printHorizontalDash();
         firstElement.ifPresent(System.out::println);
 
         List<String> elements =
                 Stream.of("a", "c", "b", "c").filter(element -> element.contains("c")).collect(Collectors.toList());
         Optional<String> anyElement1 = elements.stream().findAny();
         Optional<String> firstElement1 = elements.stream().findFirst();
-        print_horizontal_dash();
+        printHorizontalDash();
         anyElement1.ifPresent(System.out::println);
-        print_horizontal_dash();
+        printHorizontalDash();
         firstElement1.ifPresent(System.out::println);
 
         // pipeline
         Stream<String> onceModifiedStream = Stream.of("abcd", "bbcd", "cdcd").skip(1);
-        print_horizontal_dash();
+        printHorizontalDash();
         onceModifiedStream.forEach(System.out::println);
         onceModifiedStream = Stream.of("abcd", "bbcd", "cdcd").skip(1);
         Stream<String> twiceModifiedStream = onceModifiedStream.skip(1).map(element -> element.substring(0, 3));
-        print_horizontal_dash();
+        printHorizontalDash();
         twiceModifiedStream.forEach(System.out::println);
 
         List<String> list = Arrays.asList("abc1", "abc2", "abc3");
-        long size = list.stream().skip(1).map(element -> element.substring(0, 3)).sorted().count();
-        print_horizontal_dash();
+        long size = list.stream().skip(1).map(element -> element.substring(0, 3)).count();
+        printHorizontalDash();
         System.out.println(size);
 
         // lazy invocation
@@ -125,10 +128,10 @@ public class MappingTest {
             wasCalled();
             return element.contains("2");
         });
-        print_horizontal_dash();
+        printHorizontalDash();
         stream2.forEach(System.out::println);
 
-        print_horizontal_dash();
+        printHorizontalDash();
         Optional<String> stream3 = list.stream().filter(element -> {
             System.out.println("filter() was called");
             return element.contains("2");
@@ -145,7 +148,7 @@ public class MappingTest {
             wasCalled();
             return element.substring(0, 3);
         }).skip(2).count();
-        print_horizontal_dash();
+        printHorizontalDash();
         System.out.println(size3);
         System.out.println(counter); // count of being called
 
@@ -155,7 +158,7 @@ public class MappingTest {
             wasCalled();
             return element.substring(0, 3);
         }).count();
-        print_horizontal_dash();
+        printHorizontalDash();
         System.out.println(size4);
         System.out.println(counter); // count of being called
 

@@ -4,24 +4,24 @@ import java.util.Arrays;
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
-public class ParallelReductionTest {
-    private static void print_horizontal_dash() {
+public class ParallelStreamTest1 {
+    private static void printHorizontalDash() {
         System.out.println("--------------------------------------------------------");
     }
 
     public static void main(String[] args) {
         // reduction
-        print_horizontal_dash();
+        printHorizontalDash();
         OptionalInt reduced = IntStream.range(1, 4).reduce((a, b) -> a + b);
         reduced.ifPresent(System.out::println); // 1 + 2 + 3
-        print_horizontal_dash();
+        printHorizontalDash();
         int reducedTwoParams = IntStream.range(1, 4).reduce(20, (a, b) -> {
             System.out.println("reduce: a=" + a + ",b=" + b);
             return a + b;
         });
         System.out.println(reducedTwoParams); // (((20 + 1) + 2) + 3)
 
-        print_horizontal_dash();
+        printHorizontalDash();
         int reducedParallel = Arrays.asList(1, 2, 3).parallelStream().reduce(10,
                 /* accumulator */ (a, b) -> {
                     System.out.println("parallelStream().accumulator: a=" + a + ",b=" + b);
