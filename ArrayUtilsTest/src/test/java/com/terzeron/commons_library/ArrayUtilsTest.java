@@ -1,10 +1,12 @@
 package com.terzeron.commons_library;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class ArrayUtilsTest {
+    @Test
     public static void addTest() {
         int[] oldArray = {2, 3, 4, 5};
         int[] expectedArray1 = {2, 3, 4, 5, 1};
@@ -24,6 +26,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray3, newArray);
     }
 
+    @Test
     public static void removeTest() {
         int[] oldArray = {1, 2, 3, 3, 4};
         int[] expectedArray1 = {1, 2, 3, 4};
@@ -41,6 +44,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray3, newArray);
     }
 
+    @Test
     public static void reverseTest() {
         int[] originalArray1 = {1, 2, 3, 4, 5};
         int[] originalArray2 = {1, 2, 3, 4, 5};
@@ -54,6 +58,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray2, originalArray2);
     }
 
+    @Test
     public static void shiftTest() {
         int[] originalArray1 = {1, 2, 3, 4, 5};
         int[] originalArray2 = {1, 2, 3, 4, 5};
@@ -68,6 +73,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray2, originalArray2);
     }
 
+    @Test
     public static void subArrayTest() {
         int[] oldArray = {1, 2, 3, 4, 5};
         int[] expectedArray = {3, 4, 5};
@@ -75,6 +81,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray, newArray);
     }
 
+    @Test
     public static void swapTest() {
         int[] originalArray1 = {1,2,3,4,5};
         int[] originalArray2 = {1,2,3,4,5};
@@ -87,6 +94,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expectedArray2, originalArray2);
     }
 
+    @Test
     public static void main(String[] args) {
         addTest();
         removeTest();

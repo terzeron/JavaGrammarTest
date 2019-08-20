@@ -41,16 +41,16 @@ public class ComparatorTest {
         List<Person> people = createPeople();
 
         // comparator를 이용한 컬렉션 정렬
-        /*Collections.sort(people, new Comparator<>() {
+        /*Collections.com.terzeron.grammar.sort(people, new Comparator<>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return o1.getLastName().compareTo(o2.getLastName());
             }
         });*/
         // lambda를 이용한 컬렉션 정렬
-        /*Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
+        /*Collections.com.terzeron.grammar.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
         // list 상태에서 바로 정렬
-        /*people.sort((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
+        /*people.com.terzeron.grammar.sort((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
         // Comparator.comparing이라는 static method를 사용하는 정렬 방법
         people.sort(Comparator.comparing(Person::getLastName));
 

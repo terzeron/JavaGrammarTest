@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Created by terzeron on 2016. 8. 23..
  */
 public class CompressJPEGFileTest {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
         File imageFile = new File("desert.jpg");
         File compressedImageFile = new File("compressed_file.jpg");
 
@@ -29,7 +29,7 @@ public class CompressJPEGFileTest {
             throw new IllegalStateException("Writers Not Found");
         }
 
-        ImageWriter imageWriter = (ImageWriter) imageWriters.next();
+        ImageWriter imageWriter = imageWriters.next();
         ImageOutputStream ios = ImageIO.createImageOutputStream(os);
         imageWriter.setOutput(ios);
         ImageWriteParam imageWriteParam = imageWriter.getDefaultWriteParam();

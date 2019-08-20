@@ -40,7 +40,7 @@ public class CollectionTest {
         Collections.sort(list, Arrays::compare);
         System.out.println("\nafter: ");
         list.forEach(a -> System.out.print(Arrays.toString(a)));
-        System.out.println("");
+        System.out.println();
 
         String[] sa = {"d", "e", "f", "g", "h"};
         String[] sb = {"a", "b", "c", "d", "e", "f"};
