@@ -1,5 +1,7 @@
 package com.terzeron.grammar.nio;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -9,6 +11,7 @@ import java.nio.file.Paths;
 /**
  * Created by terzeron on 2017. 5. 15..
  */
+@Slf4j
 public class ListFileTest {
     public static void main(String[] args) {
         Path basePath = Paths.get("/tmp");
@@ -18,7 +21,7 @@ public class ListFileTest {
                 System.out.println(path.toString());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 }

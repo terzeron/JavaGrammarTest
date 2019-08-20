@@ -1,6 +1,7 @@
 package com.terzeron.grammar.mail;
 
-import java.util.Properties;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -8,7 +9,9 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
+@Slf4j
 public class SendMail {
     private String from;
     private String to;
@@ -35,7 +38,7 @@ public class SendMail {
             fromAddress = new InternetAddress(from);
             toAddress = new InternetAddress(to);
         } catch (AddressException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
 
         try {
@@ -45,7 +48,7 @@ public class SendMail {
             simpleMessage.setText(text);
             Transport.send(simpleMessage);
         } catch (MessagingException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 }

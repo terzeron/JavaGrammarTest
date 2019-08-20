@@ -1,5 +1,7 @@
 package com.terzeron.grammar.lambda;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -9,13 +11,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.*;
 
+@Slf4j
 public class MappingTest {
-    static Logger log = Logger.getLogger("StreamTest");
-
     static Stream<String> streamOf(List<String> list) {
         return (list == null || list.isEmpty()) ? Stream.empty() : list.stream();
     }
@@ -84,7 +84,7 @@ public class MappingTest {
             printHorizontalDash();
             streamWithCharset.forEach(System.out::println);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
 
         // referencing

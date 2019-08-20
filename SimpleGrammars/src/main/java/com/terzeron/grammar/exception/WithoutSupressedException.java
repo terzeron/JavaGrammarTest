@@ -23,7 +23,7 @@ public class WithoutSupressedException {
                 // 여기는 실행되지 않음
                 err.println("There are " + numSuppressed + " suppressed exceptions:");
                 for (final Throwable exception : suppressedExceptions) {
-                    err.println("" + exception.toString());
+                    err.println("" + e.toString());
                 }
             }
         }

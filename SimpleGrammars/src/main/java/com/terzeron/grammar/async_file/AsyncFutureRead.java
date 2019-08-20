@@ -1,6 +1,5 @@
 package com.terzeron.grammar.async_file;
 
-import com.sun.org.slf4j.internal.LoggerFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.logging.Logger;
 
 /**
  * Created by terzeron on 2017. 9. 13..
@@ -37,7 +35,7 @@ public class AsyncFutureRead {
             System.out.println("Contents of file: ");
             System.out.println(Charset.defaultCharset().decode(buffer));
         } catch (IOException | InterruptedException | ExecutionException e) {
-            log.error(e);
+            log.error(e.getMessage(), e);
         }
     }
 }

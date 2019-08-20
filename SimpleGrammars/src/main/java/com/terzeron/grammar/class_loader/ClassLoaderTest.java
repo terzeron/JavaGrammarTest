@@ -1,5 +1,8 @@
 package com.terzeron.grammar.class_loader;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ClassLoaderTest {
     public static void main(String[] args) {
         try {
@@ -12,7 +15,7 @@ public class ClassLoaderTest {
             Class.forName("com.terzeron.grammar.class_loader.TestClass");
             System.out.println("after loading by forName()");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 }

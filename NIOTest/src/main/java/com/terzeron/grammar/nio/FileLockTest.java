@@ -1,5 +1,7 @@
 package com.terzeron.grammar.nio;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.nio.channels.FileLock;
 /**
  * Created by terzeron on 2017. 5. 15..
  */
+@Slf4j
 public class FileLockTest {
     public static void main(String[] args) throws Exception {
         RandomAccessFile file = null;
@@ -42,7 +45,7 @@ public class FileLockTest {
             int data = input.read();
             System.out.println(data);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 }

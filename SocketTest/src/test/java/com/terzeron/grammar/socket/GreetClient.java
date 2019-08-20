@@ -1,11 +1,14 @@
 package com.terzeron.grammar.socket;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+@Slf4j
 public class GreetClient {
     private Socket clientSocket;
     private PrintWriter out;
@@ -17,7 +20,7 @@ public class GreetClient {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 
@@ -31,7 +34,7 @@ public class GreetClient {
                 resp = in.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         return resp;
     }
@@ -42,7 +45,7 @@ public class GreetClient {
             out.close();
             clientSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
 }
