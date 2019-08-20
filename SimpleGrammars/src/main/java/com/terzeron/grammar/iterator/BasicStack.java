@@ -6,12 +6,13 @@ import java.util.Iterator;
  * Created by terzeron on 2016. 9. 5..
  */
 public class BasicStack<Item> implements Iterable<Item> {
-    private Item[] s;
+    private final Item[] s;
     private int N;
 
+    @SuppressWarnings("unchecked")
     public BasicStack() {
         final int CAPACITY = 1000;
-        s = (Item []) new Object[CAPACITY];
+        s = (Item[]) new Object[CAPACITY];
     }
 
     public Item pop() {
@@ -25,11 +26,13 @@ public class BasicStack<Item> implements Iterable<Item> {
         s[N++] = item;
     }
 
-    public int size() {
-        return N;
-    }
+// --Commented out by Inspection START (2019-08-20 14:23):
+//    public int size() {
+//        return N;
+//    }
+// --Commented out by Inspection STOP (2019-08-20 14:23)
 
-    public Iterator iterator() {
+    public Iterator<Item> iterator() {
         return new ArrayIterator();
     }
 
