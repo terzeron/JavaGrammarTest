@@ -12,7 +12,8 @@ public class ParallelStreamTest1 {
     public static void main(String[] args) {
         // reduction
         printHorizontalDash();
-        OptionalInt reduced = IntStream.range(1, 4).reduce((a, b) -> a + b);
+        /*OptionalInt reduced = IntStream.range(1, 4).reduce((a, b) -> a + b);*/
+        OptionalInt reduced = IntStream.range(1, 4).reduce(Integer::sum);
         reduced.ifPresent(System.out::println); // 1 + 2 + 3
         printHorizontalDash();
         int reducedTwoParams = IntStream.range(1, 4).reduce(20, (a, b) -> {

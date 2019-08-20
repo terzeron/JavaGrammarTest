@@ -18,10 +18,10 @@ public class ComparatorTest {
         private String placeOfBirth;
     }
 
-    static List<Person> createPeople() {
+    private static List<Person> createPeople() {
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(1900, Calendar.JANUARY, 01, 12, 00);
+        calendar.set(1900, Calendar.JANUARY, 1, 12, 0);
         List<Person> people = new ArrayList<>();
         Person person = new Person("Raju", "Sarkar", calendar.getTime(), "Delhi");
         people.add(person);
@@ -40,13 +40,21 @@ public class ComparatorTest {
     public static void main(String[] args) {
         List<Person> people = createPeople();
 
-        Collections.sort(people, new Comparator<Person>() {
+        // comparator를 이용한 컬렉션 정렬
+        /*Collections.sort(people, new Comparator<>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return o1.getLastName().compareTo(o2.getLastName());
             }
-        });
+        });*/
+        // lambda를 이용한 컬렉션 정렬
+        /*Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
+        // list 상태에서 바로 정렬
+        /*people.sort((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));*/
+        // Comparator.comparing이라는 static method를 사용하는 정렬 방법
+        people.sort(Comparator.comparing(Person::getLastName));
+
         System.out.println("Sorted by last name");
-        people.stream().forEach(System.out::println);
+        people.forEach(System.out::println);
     }
 }

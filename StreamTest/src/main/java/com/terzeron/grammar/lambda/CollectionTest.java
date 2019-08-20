@@ -25,19 +25,22 @@ public class CollectionTest {
         printHorizontalDash();
         double averagePrice = productList.stream()
                 .collect(Collectors.averagingLong(Product::getPrice));
+        /*long summingPrice = productList.stream()
+                .collect(Collectors.summingLong(Product::getPrice));*/
+        // collect(summingLong()) -> mapToLong().sum()
         long summingPrice = productList.stream()
-                .collect(Collectors.summingLong(Product::getPrice));
+                .mapToLong(Product::getPrice).sum();
         LongSummaryStatistics stat = productList.stream()
                 .collect(Collectors.summarizingLong(Product::getPrice));
-        System.out.println("avergage: " + averagePrice);
+        System.out.println("average: " + averagePrice);
         System.out.println("sum: " + summingPrice);
         System.out.println(stat);
 
         printHorizontalDash();
-        // price값으로 그룹핑
+        // price 값으로 그룹핑
         Map<Long, List<Product>> collectorMapOfLists = productList.stream()
                 .collect(Collectors.groupingBy(Product::getPrice));
-        // price값이 15가 넘는지의 여부를 기준으로 true/false 그룹으로 분류
+        // price 값이 15가 넘는지의 여부를 기준으로 true/false 그룹으로 분류
         Map<Boolean, List<Product>> mapPartitioned = productList.stream()
                 .collect(Collectors.partitioningBy(element -> element.getPrice() > 15));
         // set으로 변환

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExceptionTest {
-    static Integer readFromFile(Integer integer) throws IOException {
+    private static Integer readFromFile(Integer integer) throws IOException {
         //System.out.println("integer:" + integer);
         if (integer > 10) {
             throw new IOException("fake io exception");
@@ -18,7 +18,8 @@ public class ExceptionTest {
 
     public static void main(String[] args) {
         List<Integer> integers = Arrays.asList(3, 9, 7, 0, 10, 20);
-        CheckedFunction1<Integer, Integer> readFunction = i -> readFromFile(i);
+        /*CheckedFunction1<Integer, Integer> readFunction = i -> readFromFile(i);*/
+        CheckedFunction1<Integer, Integer> readFunction = ExceptionTest::readFromFile;
 
         // 1) 정석대로 예외 처리한다면 다음과 같이
         System.out.println("-------- 1 --------");
@@ -28,7 +29,7 @@ public class ExceptionTest {
                         try {
                             ret = readFromFile(i);
                         } catch (IOException e) {
-                            System.out.println("exception catched");
+                            System.out.println("exception caught");
                         }
                         return ret;
                     }
@@ -38,14 +39,14 @@ public class ExceptionTest {
         // 2) lifting을 이용하여 처리하려면
         System.out.println("-------- 2 --------");
         integers.stream()
-                .map(CheckedFunction1.lift(i -> readFromFile(i)))
+                .map(CheckedFunction1.lift(ExceptionTest::readFromFile))
                 .map(k -> k.getOrElse(-1)) // 예외 발생 시 default value 처리
                 .forEach(System.out::println);
 
         // 3) liftTry를 이용하여 처리하려면
         System.out.println("-------- 3 --------");
         integers.stream()
-                .map(CheckedFunction1.liftTry(i -> readFromFile(i)))
+                .map(CheckedFunction1.liftTry(ExceptionTest::readFromFile))
                 .flatMap(Value::toJavaStream) // 이 변환이 없으면 값 대신 Success or Failure 타입으로 반환됨
                 .forEach(System.out::println);
 
