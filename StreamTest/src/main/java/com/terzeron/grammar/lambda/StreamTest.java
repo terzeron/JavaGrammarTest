@@ -4,9 +4,7 @@ import lombok.Data;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -99,6 +97,33 @@ public class StreamTest {
         System.out.println(resultList);
     }
 
+    private static void takeWhileTest() {
+        Stream<String> stream = Stream.iterate("", s -> s + "s")
+                .takeWhile(s -> s.length() < 10);
+        stream.forEach(System.out::println);
+
+        Stream<String> stream2 = Stream.iterate("", s -> s + "s")
+                .dropWhile(s -> !s.contains("sssss"))
+                .takeWhile(s -> s.length() < 10);
+        stream2.forEach(System.out::println);
+    }
+
+    private static void ofNullableTest() {
+        List<String> list = new ArrayList<>();
+        list.add("hello");
+        list.add("world");
+        list.add("java");
+        Map<String, Integer> map = new HashMap<>();
+        map.put("hello", 1);
+        map.put("java", 3);
+        List<Integer> list2 = list.stream()
+                .flatMap(s -> Stream.ofNullable(map.get(s))) // null도 존재할 수 있지만 무시함
+                .collect(Collectors.toList());
+        for (Integer i : list2) {
+            System.out.println(i);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("---- creationTest ----");
         creationTest();
@@ -106,8 +131,14 @@ public class StreamTest {
         System.out.println("---- parallelStreamTest ----");
         parallelStreamTest();
 
-        System.out.println("--- operationTest ----");
+        System.out.println("---- operationTest ----");
         operationTest();
+
+        System.out.println("---- takeWhileTest ----");
+        takeWhileTest();
+
+        System.out.println("---- ofNullableTest ----");
+        ofNullableTest();
     }
 }
 
