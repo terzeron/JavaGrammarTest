@@ -124,6 +124,27 @@ public class StreamTest {
         }
     }
 
+    private static void optionalTest() {
+        List<Optional<String>> listOfOptionals = Arrays.asList(Optional.empty(), Optional.of("foo"), Optional.empty()
+                , Optional.of("bar"));
+        List<String> list2 = listOfOptionals
+                .stream()
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+        for (String s : list2) {
+            System.out.println(s);
+        }
+
+        List<String> list3 = listOfOptionals
+                .stream()
+                .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty())
+                .collect(Collectors.toList());
+        for (String s : list3) {
+            System.out.println(s);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("---- creationTest ----");
         creationTest();
@@ -139,6 +160,9 @@ public class StreamTest {
 
         System.out.println("---- ofNullableTest ----");
         ofNullableTest();
+
+        System.out.println("---- optionalTest ----");
+        optionalTest();
     }
 }
 
