@@ -7,7 +7,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>ArrayUtilsTest</module>
-        <module>CollectionTest</module>
         <module>StreamTest</module>
         <module>AbstractFactoryPattern</module>
         <module>EnumerationTest</module>
@@ -52,7 +51,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.4.2</version>
+            <version>5.5.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
