@@ -16,6 +16,7 @@
         <module>NIOTest</module>
         <module>CompressTest</module>
         <module>FunctionalInterfaceTest</module>
+        <module>ReactiveTest</module>
     </modules>
 
     <properties>
