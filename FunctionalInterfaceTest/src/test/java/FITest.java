@@ -2,18 +2,19 @@ import com.terzeron.grammar.Foo;
 import com.terzeron.grammar.FooExtended;
 import com.terzeron.grammar.UseFoo;
 import com.terzeron.grammar.UseFooExtended;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Function;
 
-public class FITest {
-    private UseFoo useFoo;
-    private UseFooExtended useFooExtended;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Before
-    public void setUp() {
+public class FITest {
+    private static UseFoo useFoo;
+    private static UseFooExtended useFooExtended;
+
+    @BeforeAll
+    public static void setUp() {
         useFoo = new UseFoo();
         useFooExtended = new UseFooExtended();
     }
@@ -22,21 +23,21 @@ public class FITest {
     public void test() {
         Foo foo = parameter -> parameter + " from lambda";
         String result = useFoo.add("a flower", foo);
-        Assert.assertEquals("a flower from lambda", result);
+        assertEquals("a flower from lambda", result);
     }
 
     @Test
     public void testWithFI() {
         Function<String, String> fn = parameter -> parameter + " from lambda";
         String result = useFoo.addWithStandardFI("a box", fn);
-        Assert.assertEquals("a box from lambda", result);
+        assertEquals("a box from lambda", result);
     }
 
     @Test
     public void testWithFooExtended() {
         FooExtended foo = parameter -> parameter + " from lambda (extended)";
         String result = useFooExtended.add("a letter", foo);
-        Assert.assertEquals("a letter from lambda (extended)", result);
+        assertEquals("a letter from lambda (extended)", result);
     }
 
     private String value = "enclosing scope value";
@@ -53,7 +54,7 @@ public class FITest {
             }
         };
         String resultIC = fooIC.method("meaningless parameter");
-        Assert.assertEquals("inner class value", resultIC);
+        assertEquals("inner class value", resultIC);
 
         Foo fooLambda = parameter -> {
             String value = "lambda value";
@@ -61,6 +62,6 @@ public class FITest {
             return this.value;
         };
         String resultLambda = fooLambda.method("meaningless parameter");
-        Assert.assertEquals(resultLambda, "enclosing scope value");
+        assertEquals(resultLambda, "enclosing scope value");
     }
 }

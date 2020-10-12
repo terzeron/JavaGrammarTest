@@ -6,8 +6,7 @@ import java.util.*;
 import java.util.function.Function;
 
 import static java.util.stream.Collectors.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class CollectorsTest {
@@ -18,7 +17,7 @@ public class CollectorsTest {
 
         List<String> listWithDuplicates = Arrays.asList("a", "bb", "c", "d", "bb");
         Set<String> result1 = listWithDuplicates.stream().collect(toSet());
-        assertThat(result1, hasSize(4));
+        assertEquals(result1.size(), 4);
 
         List<String> result2 = givenList.stream().collect(toCollection(LinkedList::new));
 
