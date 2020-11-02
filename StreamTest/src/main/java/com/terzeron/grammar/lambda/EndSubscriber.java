@@ -16,6 +16,7 @@ public class EndSubscriber<T> implements Subscriber<T> {
 
     @Override public void onNext(T item) {
         System.out.println("Got : " + item);
+        consumedElements.add(item);
         subscription.request(1);
     }
 
