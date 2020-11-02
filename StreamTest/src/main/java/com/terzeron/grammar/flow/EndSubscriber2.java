@@ -1,4 +1,4 @@
-package com.terzeron.grammar.lambda;
+package com.terzeron.grammar.flow;
 
 import java.util.LinkedList;
 import java.util.List;
