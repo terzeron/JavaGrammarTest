@@ -1,6 +1,5 @@
 package com.terzeron.grammar.flow;
 
-import com.terzeron.grammar.flow.EndSubscriber2;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
