@@ -11,6 +11,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.lang.Thread.currentThread;
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
+//
+// https://grokonez.com/java/java-9/java-9-flow-api-example-publisher-and-subscriber
+//
 public class MyPublisher implements Flow.Publisher<Integer> {
     private static final String LOG_MESSAGE_FORMAT = "Publisher >> [%s] %s%n";
     final ExecutorService executor = Executors.newFixedThreadPool(4);
