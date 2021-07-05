@@ -17,6 +17,7 @@
         <module>CompressTest</module>
         <module>FunctionalInterfaceTest</module>
         <module>ReactiveTest</module>
+        <module>RxJavaTest</module>
     </modules>
 
     <properties>
