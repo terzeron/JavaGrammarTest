@@ -67,7 +67,6 @@ public class SomeFeed<T> {
                     listeners.forEach(subscriber -> {
                         PriceTick tick = new PriceTick(sequence.getAndIncrement(), new Date(), instrument, finalPrice);
                         String message = String.format("%s %s %s", format.format(new Date()), instrument, finalPrice);
-//            Logger.print("Notifying " + message);
                         subscriber.priceTick(tick);
                     });
                     synchronized (MUTEX) {

@@ -4,6 +4,8 @@ import rx.Observable;
 import rx.AsyncEmitter;
 import rx.observables.ConnectableObservable;
 
+import static com.terzeron.grammar.rxjava.Utils.print;
+
 public class PriceEmitter {
     public static void main(String[] args) {
         SomeFeed<PriceTick> feed = new SomeFeed();
@@ -24,22 +26,42 @@ public class PriceEmitter {
                         }
                     };
                     feed.register(listener);
-                }, AsyncEmitter.BackpressureMode.BUFFER);
+                }, AsyncEmitter.BackpressureMode.BUFFER); // consume될 때까지 버퍼링됨
 
-        ConnectableObservable<PriceTick> hotObservable = obs.publish();
-        hotObservable.connect();
-
-        hotObservable.take(10).subscribe((priceTick) ->
-                System.out.printf("1 %s %4s %6.2f%n", priceTick.getDate(),
-                        priceTick.getInstrument(), priceTick.getPrice()));
-
+        print("Sleep 5 seconds");
         try {
-            Thread.sleep(1_000);
+            Thread.sleep(5_000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        hotObservable.take(10).subscribe((priceTick) ->
+        obs.take(5).subscribe((priceTick) ->
+                System.out.printf("1 %s %4s %6.2f%n", priceTick.getDate(),
+                        priceTick.getInstrument(), priceTick.getPrice()));
+
+        print("Sleep 5 seconds");
+        try {
+            Thread.sleep(5_000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // cold observable을 hot observable로 변경
+        ConnectableObservable<PriceTick> hotObservable = obs.publish();
+        hotObservable.connect();
+
+        hotObservable.take(5).subscribe((priceTick) ->
+                System.out.printf("1 %s %4s %6.2f%n", priceTick.getDate(),
+                        priceTick.getInstrument(), priceTick.getPrice()));
+
+        print("Sleep 5 seconds");
+        try {
+            Thread.sleep(5_000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        hotObservable.take(5).subscribe((priceTick) ->
                 System.out.printf("2 %s %4s %6.2f%n", priceTick.getDate(),
                         priceTick.getInstrument(), priceTick.getPrice()));
     }
