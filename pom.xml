@@ -18,6 +18,7 @@
         <module>FunctionalInterfaceTest</module>
         <module>ReactiveTest</module>
         <module>RxJavaTest</module>
+        <module>ReactorTest</module>
     </modules>
 
     <properties>
