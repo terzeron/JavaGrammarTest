@@ -3,6 +3,7 @@ package com.terzeron.grammar.reactor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,22 +52,22 @@ public class FluxTest2 {
 
     public static void shortCircuit() {
         Flux<String> helloPauseWorld = Mono.just("Hello")
-                .concatWith(Mono.just("World").delaySubscriptionMillis(500));
+                .concatWith(Mono.just("World").delaySubscription(Duration.ofMillis(500)));
         helloPauseWorld.subscribe(System.out::println);
     }
 
     public static void block() {
         Flux<String> helloPauseWorld = Mono.just("Hello")
-                .concatWith(Mono.just("world").delaySubscriptionMillis(500));
+                .concatWith(Mono.just("world").delaySubscription(Duration.ofMillis(500)));
         // blocking mode
         helloPauseWorld.toStream().forEach(System.out::println);
     }
 
     public static void firstEmitting() {
         Mono<String> a = Mono.just("oops, I'm late")
-                .delaySubscriptionMillis(450);
+                .delaySubscription(Duration.ofMillis(450));
         Flux<String> b = Flux.just("let's get", "the party", "started")
-                .delayMillis(400);
+                .delaySubscription(Duration.ofMillis(400));
 
         // firstEmitting: amb of RxJava
         Flux.firstEmitting(a, b)
