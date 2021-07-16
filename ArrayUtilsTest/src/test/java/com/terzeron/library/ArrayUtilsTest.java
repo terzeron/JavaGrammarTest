@@ -1,4 +1,4 @@
-package com.terzeron.commons_library;
+package com.terzeron.library;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.Test;
