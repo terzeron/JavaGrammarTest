@@ -15,10 +15,6 @@
         <module>MailTest</module>
         <module>NIOTest</module>
         <module>CompressTest</module>
-        <module>FunctionalInterfaceTest</module>
-        <module>ReactiveTest</module>
-        <module>RxJavaTest</module>
-        <module>ReactorTest</module>
     </modules>
 
     <properties>

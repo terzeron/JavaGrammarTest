@@ -12,6 +12,16 @@
     <artifactId>StreamTest</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>3.0.3.RELEASE</version>
+        </dependency>
         <!-- Optional과 비슷한 Vavr 객체 컨테이너 -->
         <dependency>
             <groupId>io.vavr</groupId>
