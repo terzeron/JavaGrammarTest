@@ -9,8 +9,8 @@ public class StreamSupplierTest {
         Supplier<Stream<String>> streamSupplier = () -> Stream.of("A", "B", "C");
 
         Optional<String> result1 = streamSupplier.get().findAny();
-        System.out.println(result1.get());
+        System.out.println(result1.orElse(""));
         Optional<String> result2 = streamSupplier.get().findFirst();
-        System.out.println(result2.get());
+        System.out.println(result2.orElse(""));
     }
 }

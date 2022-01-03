@@ -33,6 +33,7 @@ public class MappingTest {
     public static void main(String[] args) {
         // collection to stream
         Stream<String> streamEmpty = Stream.empty();
+        streamEmpty.forEach(System.out::println);
         List<String> list1 = Arrays.asList("a", "b", "c");
         streamOf(list1);
         Stream<String> streamOfCollection = list1.stream();

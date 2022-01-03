@@ -62,8 +62,7 @@ public class PrimitiveTypeStream {
             System.out.println(i);
         }
 
-        int sum = Arrays.asList(33, 45)
-                .stream()
+        int sum = Arrays.stream(new Integer[]{33, 45})
                 .mapToInt(i -> i)
                 .sum();
         System.out.println(sum);

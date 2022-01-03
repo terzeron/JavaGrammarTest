@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class ComparisonWithLambda {
     public static void main(String[] args) {
-        List<Human> humans = new ArrayList<Human>();
+        List<Human> humans = new ArrayList<>();
         humans.add(new Human("Sarah", 10));
         humans.add(new Human("Jack", 12));
         humans.add(new Human("Mike", 30));

@@ -47,5 +47,6 @@ public class DistinctByTest {
 
         // third method
         List<Person> personListFiltered3 = StreamEx.of(personList).distinct(Person::getName).toList();
+        personListFiltered3.forEach(p -> System.out.println(p.getName()));
     }
 }

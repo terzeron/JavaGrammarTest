@@ -65,6 +65,7 @@ public class StreamTest {
         List<String> uris = new ArrayList<>();
         uris.add("StreamTest/src/main/java/com/terzeron/grammar/lambda/StreamTest.java");
         Stream<Path> stream3 = uris.stream().map(uri -> Paths.get(uri));
+        stream3.forEach(System.out::println);
 
         @Data
         class Detail {

@@ -18,7 +18,7 @@ public class LastElement {
 
         long count = valueList.stream().count();
         Stream<String> stream2 = valueList.stream();
-        String last2 = stream2.skip(count - 1).findFirst().get();
+        String last2 = stream2.skip(count - 1).findFirst().orElse("");
         System.out.println(last2);
 
         // infinite -> will not terminate
