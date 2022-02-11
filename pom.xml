@@ -15,6 +15,7 @@
         <module>MailTest</module>
         <module>NIOTest</module>
         <module>CompressTest</module>
+        <module>SimpleFluxTest</module>
     </modules>
 
     <properties>
