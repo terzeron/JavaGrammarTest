@@ -70,7 +70,7 @@ public class FluxTest2 {
                 .delaySubscription(Duration.ofMillis(400));
 
         // firstEmitting: amb of RxJava
-        Flux.firstEmitting(a, b)
+        Flux.firstWithSignal(a, b)
                 .toIterable()
                 .forEach(System.out::println);
     }
