@@ -1,4 +1,4 @@
-package com.terzeron.grammar.lambda1.lambda;
+package com.terzeron.grammar.lambda;
 
 import java.util.ArrayList;
 import java.util.List;
