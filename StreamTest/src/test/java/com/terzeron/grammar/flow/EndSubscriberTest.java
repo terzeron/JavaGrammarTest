@@ -1,7 +1,7 @@
 package com.terzeron.grammar.flow;
 
-import com.terzeron.grammar.processor.EndSubscriber;
-import com.terzeron.grammar.processor.TransformProcessor;
+import com.terzeron.grammar.flow.processor.EndSubscriber;
+import com.terzeron.grammar.flow.processor.TransformProcessor;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
