@@ -1,4 +1,4 @@
-package com.terzeron.grammar.lambda;
+package com.terzeron.grammar.lambda1.lambda;
 
 import java.util.List;
 import java.util.UUID;

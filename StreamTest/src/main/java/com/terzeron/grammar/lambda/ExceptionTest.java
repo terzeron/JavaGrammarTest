@@ -1,4 +1,4 @@
-package com.terzeron.grammar.lambda;
+package com.terzeron.grammar.lambda1.lambda;
 
 import io.vavr.CheckedFunction1;
 import io.vavr.Value;

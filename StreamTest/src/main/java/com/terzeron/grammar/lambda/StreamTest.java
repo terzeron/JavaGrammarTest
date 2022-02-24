@@ -1,4 +1,4 @@
-package com.terzeron.grammar.lambda;
+package com.terzeron.grammar.lambda1.lambda;
 
 import lombok.Data;
 
