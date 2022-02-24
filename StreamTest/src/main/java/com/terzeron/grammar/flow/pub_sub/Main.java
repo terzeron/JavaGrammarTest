@@ -1,4 +1,4 @@
-package com.terzeron.grammar.flow1;
+package com.terzeron.grammar.flow.pub_sub;
 
 public class Main {
 

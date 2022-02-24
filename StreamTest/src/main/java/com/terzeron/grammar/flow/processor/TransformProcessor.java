@@ -1,4 +1,4 @@
-package com.terzeron.grammar.processor;
+package com.terzeron.grammar.flow.processor;
 
 import java.util.concurrent.Flow;
 import java.util.concurrent.Flow.Subscription;

@@ -1,4 +1,4 @@
-package com.terzeron.grammar.flow1;
+package com.terzeron.grammar.flow.pub_sub;
 
 import java.util.Random;
 import java.util.concurrent.Flow.Subscriber;

@@ -1,4 +1,4 @@
-package com.terzeron.grammar.flow2;
+package com.terzeron.grammar.flow.pub_proc_sub;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {

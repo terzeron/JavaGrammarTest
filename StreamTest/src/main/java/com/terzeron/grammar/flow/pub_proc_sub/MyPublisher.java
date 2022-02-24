@@ -1,4 +1,4 @@
-package com.terzeron.grammar.flow2;
+package com.terzeron.grammar.flow.pub_proc_sub;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;

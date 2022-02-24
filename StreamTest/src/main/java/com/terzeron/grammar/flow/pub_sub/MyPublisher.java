@@ -1,4 +1,4 @@
-package com.terzeron.grammar.flow1;
+package com.terzeron.grammar.flow.pub_sub;
 
 import java.util.ArrayList;
 import java.util.Collections;
